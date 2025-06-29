@@ -63,6 +63,11 @@
   rgb rand(BLStream)
 #end
 
+// Creates a random Gray color within a min/max range.
+#macro RandomGrayRange(Min, Max)
+  rgb RandomFloatRange(Min, Max)
+#end
+
 ////////////////////
 // Bools
 ////////////////////
