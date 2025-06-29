@@ -45,4 +45,32 @@
   }
 #end
 
-
+#macro SphereCage(Long, Lat, R1, R2)
+  #local Long = Long + 1;
+  union {
+    #if (Long > 0)
+      #for (i, 0, Long)
+        #declare N = i / Long * pi;
+        #declare A = N * pi;
+        torus {
+          sin(N)*R1, R2
+          translate cos(N)*R1 * y
+        }
+      #end
+    #end
+    #if (Lat > 0)
+      #for (i, 0, Lat)
+        difference {
+          torus {
+            R1, R2
+          }
+          box {
+            <-R1*2, -R2*2, -R1*2>
+            <0, R2*2, R1*2>
+          }
+          rotate <90, i/Lat * 360, 0>
+        }
+      #end
+    #end
+  }
+#end
