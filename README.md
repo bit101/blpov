@@ -9,3 +9,5 @@ This currently includes:
 - blmath: useful math utils.
 
 Some of the functionality builds on standard POV libraries, while some functions reimplement standard lib functionality, either through ignorance that such a function exists, or a desire to have it work somewhat differently.
+
+I'm creating this for personal use. Feel free to use it or learn from it, but at your own risk and with no promise of support or maintenance.
