@@ -1,4 +1,4 @@
-#include "rand.inc"
+// Should not include blrand as blrand includes blgeom.
 #include "blmath.inc"
 
 ////////////////////
@@ -25,6 +25,13 @@
   vrotate(V, <0, 0, Angle>)
 #end
 
+// Creates a new vector interpolated betwee the given two.
+#macro VectorLerp(T, Va, Vb)
+  #local X = Lerp(T, Va.x, Vb.x);
+  #local Y = Lerp(T, Va.y, Vb.y);
+  #local Z = Lerp(T, Va.z, Vb.z);
+  <X, Y, Z>
+#end
 
 ////////////////////
 // Misc Shapes
@@ -37,4 +44,5 @@
     <X + W/2, Y + H/2, Z + D/2>
   }
 #end
+
 

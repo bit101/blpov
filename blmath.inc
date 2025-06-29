@@ -1,3 +1,4 @@
+// Should not include other bitlib files, as most of these will include blmath.
 #declare tau = pi * 2;
 
 #macro Lerp(T, Min, Max)

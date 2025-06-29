@@ -1,5 +1,6 @@
 #include "rand.inc"
 #include "blmath.inc"
+#include "blgeom.inc"
 
 ////////////////////
 // Seeding
@@ -124,7 +125,12 @@
 // Creates a random point in a circle (at origin, on X/Z plane).
 #macro RandomPointInCircle(Radius)
   #local A = RandomRadian();
-  <cos(A) * Radius, 0, sin(A) * Radius>;
+  <cos(A) * Radius, 0, sin(A) * Radius>
+#end
+
+// Creates a random point in a rectangle (at origin, on X/Z plane).
+#macro RandomPointInRect(W, D)
+  <RandomFloatRange(-W/2, W/2), 0, RandomFloatRange(-D/2, D/2)>
 #end
 
 // Creates a random point inside a cylinder.
@@ -156,3 +162,37 @@
   Point
 #end
 
+// Creates a random point between the two given points.
+#macro RandomPointOnLine(Pa, Pb)
+  VectorLerp(RandomFloat(), Pa, Pb)
+#end
+
+
+////////////////////
+// Randomize other things
+////////////////////
+
+// Randomizes a vector on each axis.
+#macro VectorRandomize(V, X, Y, Z)
+  <V.x + RandomFloatRange(-X/2, X/2), V.y + RandomFloatRange(-Y/2, Y/2), V.z + RandomFloatRange(-Z/2, Z/2)>
+#end
+
+// Creates a random bidirectional translation on each axis.
+#macro RandomTranslate(X, Y, Z)
+  translate <RandomFloatRange(-X/2, X/2), RandomFloatRange(-Y/2, Y/2), RandomFloatRange(-Z/2, Z/2)>
+#end
+
+// Creates a random bidirectional rotation on each axis.
+#macro RandomRotate(X, Y, Z)
+  rotate <RandomFloatRange(-X/2, X/2), RandomFloatRange(-Y/2, Y/2), RandomFloatRange(-Z/2, Z/2)>
+#end
+
+// Creates a random scale on each axis from 1 to the given value.
+#macro RandomScale(X, Y, Z)
+  scale <RandomFloatRange(1, X), RandomFloatRange(1, Y), RandomFloatRange(1, Z)>
+#end
+
+// Creates a random scale the same on all axis from 1 to the given value.
+#macro RandomUniScale(S)
+  scale RandomFloatRange(1, S)
+#end
