@@ -7,6 +7,7 @@ This currently includes:
 - blgeom: macros for creating and manipulating 3d shapes and vectors.
 - blrand: random functions, including generating random points in various configurations, such as on the surface or inside shapes.
 - blmath: useful math utils.
+- blcolor: color related functions.
 
 Some of the functionality builds on standard POV libraries, while some functions reimplement standard lib functionality, either through ignorance that such a function exists, or a desire to have it work somewhat differently.
 
