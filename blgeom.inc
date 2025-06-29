@@ -60,13 +60,14 @@
     #end
     #if (Lat > 0)
       #for (i, 0, Lat)
+        // Make half a torus so we're not doubling up on lat lines.
         difference {
           torus {
             R1, R2
           }
           box {
-            <-R1*2, -R2*2, -R1*2>
-            <0, R2*2, R1*2>
+            <-R1-R2-1, -R2-1, -R1-R2-1>
+            <0, R2+1, R1+R2+1>
           }
           rotate <90, i/Lat * 360, 0>
         }
